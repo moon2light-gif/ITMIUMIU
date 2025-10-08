@@ -1,2 +1,2 @@
 # ITMIUMIU
-Лабораторные работы и отчёты СППО университета ИТМО
+CSE SaAS ITMO laboratory work and reports
