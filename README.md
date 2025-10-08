@@ -1,2 +1,2 @@
 # ITMIUMIU
-CSE SaAS ITMO laboratory work and reports
+Laboratory work and reports (CSE SaAS, ITMO)
