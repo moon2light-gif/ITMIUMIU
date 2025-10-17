@@ -1,0 +1,70 @@
+@startuml
+
+top to bottom direction
+skinparam linetype ortho
+
+class DoubleTeam
+class Facade
+class Growl
+class Nuzzle
+class QuickAttack
+class Rest
+class Sharpen
+class StoneEdge
+class Swagger
+class Thunder
+class Thunderbolt
+class Will_O_Wisp
+
+class Move
+class PhysicalMove
+class SpecialMove
+class StatusMove
+
+class Pokemon
+class Diancie
+class Ponyta
+class Rapidash
+class Pichu
+class Pikachu
+class Raichu
+
+class Main
+
+Main    -[#000082,plain]-> Diancie
+Main    -[#000082,plain]-> Ponyta
+Main    -[#000082,plain]-> Rapidash
+Main    -[#000082,plain]-> Pichu
+Main    -[#000082,plain]-> Pikachu
+Main    -[#000082,plain]-> Raichu
+
+Nuzzle       -[#000082,plain]-^  PhysicalMove
+Facade          -[#000082,plain]-^  PhysicalMove
+QuickAttack    -[#000082,plain]-^  PhysicalMove
+StoneEdge    -[#000082,plain]-^  PhysicalMove
+
+Thunder     -[#000082,plain]-^  SpecialMove
+Thunderbolt    -[#000082,plain]-^  SpecialMove
+
+DoubleTeam      -[#000082,plain]-^  StatusMove
+Growl           -[#000082,plain]-^  StatusMove
+Rest            -[#000082,plain]-^  StatusMove
+Sharpen         -[#000082,plain]-^  StatusMove
+Swagger       -[#000082,plain]-^  StatusMove
+Will_O_Wisp       -[#000082,plain]-^  StatusMove
+
+DamageMove    -[#000082,plain]-^  Move
+PhysicalMove  -[#000082,plain]-^  DamageMove
+SpecialMove   -[#000082,plain]-^  DamageMove
+StatusMove    -[#000082,plain]-^  Move
+
+Diancie  -[#000082,plain]-^  Pokemon
+
+Ponyta     -[#000082,plain]-^  Pokemon
+Rapidash    -[#000082,plain]-^  Ponyta
+
+Pichu       -[#000082,plain]-^  Pokemon
+Pikachu       -[#000082,plain]-^  Pichu
+Raichu      -[#000082,plain]-^  Pikachu
+
+@enduml
