@@ -13,6 +13,6 @@ public final class Nuzzle extends PhysicalMove {
 
     @Override
     protected String describe() {
-        return "обнюхивает";
+        return "обнюхивает жоско";
     }
 }
