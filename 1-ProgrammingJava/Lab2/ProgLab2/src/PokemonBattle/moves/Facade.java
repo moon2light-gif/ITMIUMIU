@@ -23,7 +23,7 @@ public final class Facade extends PhysicalMove {
     @Override
     protected String describe() {
         if (flag) {
-            return "жоско бьет";
+            return "жоско бьёт";
         }
         else return "бьёт";
     }

@@ -17,6 +17,6 @@ public final class Will_O_Wisp extends StatusMove {
 
     @Override
     protected String describe() {
-        return "будет огонек";
+        return "воспламеняет всё вокруг";
     }
 }
