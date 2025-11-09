@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<data>
+  <schedule>
+    <selected_days>
+      <item>
+        <day>Среда</day>
+        <lessons>
+          <item>
+            <time>11:30-13:00</time>
+            <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            <group>ИНФОРМ КСиТ 2</group>
+            <audiency>1216/0 (УСЛ) АУД.</audiency>
+            <building>ул.Ломоносова, д.9, лит.М</building>
+            <subject>ИНФОРМАТИКА (ЛЕК) : АКТОВЫЙ ЗАЛ</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+          <item>
+            <time>11:30-13:00</time>
+            <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            <group>ИНФОРМ СиППО 1</group>
+            <audiency>1216/0 (УСЛ) АУД.</audiency>
+            <building>ул.Ломоносова, д.9, лит.М</building>
+            <subject>ИНФОРМАТИКА (ЛЕК) : АКТОВЫЙ ЗАЛ</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+        </lessons>
+      </item>
+      <item>
+        <day>Четверг</day>
+        <lessons>
+          <item>
+            <time>17:10-18:40</time>
+            <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            <group>ИНФОРМ (P3116) 1.11</group>
+            <audiency>3315 АУД.</audiency>
+            <building>ул.Ломоносова, д.9, лит.Е</building>
+            <subject>ИНФОРМАТИКА (ЛАБ)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+          <item>
+            <time>18:50-20:20</time>
+            <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            <group>ИНФОРМ (P3116) 1.11</group>
+            <audiency>3315 АУД.</audiency>
+            <building>ул.Ломоносова, д.9, лит.Е</building>
+            <subject>ИНФОРМАТИКА (ЛАБ)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+        </lessons>
+      </item>
+      <item>
+        <day>Суббота</day>
+        <lessons>
+          <item>
+            <time>8:10-9:40</time>
+            <week>6, 7, 10, 11, 12, 13, 14, 15</week>
+            <group>PRLCOMP 1</group>
+            <audiency>1333 АУД.</audiency>
+            <building>Кронверкский пр., д.49, лит.А</building>
+            <subject>PARALLEL COMPUTING / ПАРАЛЛЕЛЬНЫЕ ВЫЧИСЛЕНИЯ (ЛЕК)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+          <item>
+            <time>9:50-11:20</time>
+            <week>6, 7, 10, 11, 12, 13, 14, 15</week>
+            <group>PRLCOMP 1.1</group>
+            <audiency>1333 АУД.</audiency>
+            <building>Кронверкский пр., д.49, лит.А</building>
+            <subject>PARALLEL COMPUTING / ПАРАЛЛЕЛЬНЫЕ ВЫЧИСЛЕНИЯ (ЛАБ)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+          <item>
+            <time>11:30-13:00</time>
+            <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            <group>ИНФОРМ (P3106) 1.1</group>
+            <audiency>1333 АУД.</audiency>
+            <building>Кронверкский пр., д.49, лит.А</building>
+            <subject>ИНФОРМАТИКА (ЛАБ)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+          <item>
+            <time>11:30-13:00</time>
+            <week>3, 5, 7, 9, 11, 13, 15, 17</week>
+            <group>ИНФОРМ (P3107) 1.2</group>
+            <audiency>1333 АУД.</audiency>
+            <building>Кронверкский пр., д.49, лит.А</building>
+            <subject>ИНФОРМАТИКА (ЛАБ)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+          <item>
+            <time>13:30-15:00</time>
+            <week>2, 4, 6, 8, 10, 12, 14, 16</week>
+            <group>ИНФОРМ (P3106) 1.1</group>
+            <audiency>1333 АУД.</audiency>
+            <building>Кронверкский пр., д.49, лит.А</building>
+            <subject>ИНФОРМАТИКА (ЛАБ)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+          <item>
+            <time>13:30-15:00</time>
+            <week>3, 5, 7, 9, 11, 13, 15, 17</week>
+            <group>ИНФОРМ (P3107) 1.2</group>
+            <audiency>1333 АУД.</audiency>
+            <building>Кронверкский пр., д.49, лит.А</building>
+            <subject>ИНФОРМАТИКА (ЛАБ)</subject>
+            <format>Очно-дистанционный</format>
+          </item>
+        </lessons>
+      </item>
+    </selected_days>
+  </schedule>
+</data>
