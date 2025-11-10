@@ -1,6 +1,6 @@
 # 💾Информатика
 
-<img alt="Info" src="https://github.com/moon2light-gif/ITMIUMIU/blob/main/.docs/_%20(4).gif" width="520" height="280">
+<img alt="Info" src="https://github.com/moon2light-gif/ITMIUMIU/blob/main/.docs/_%20(4).gif" height="240">
 
 ## 📡Лабораторные работы
 
