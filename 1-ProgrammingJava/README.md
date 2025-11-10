@@ -2,7 +2,7 @@
 
 ## Важное
 
-Сайт со всеми лекциями, лабораторными и методичками по программированию💿💿💿: [se.ifmo.ru/courses/programming](https://se.ifmo.ru/courses/programming)
+Сайт со всеми лекциями, лабораторными и методичками по программированию: [se.ifmo.ru/courses/programming](https://se.ifmo.ru/courses/programming)
 
 ## 🧸Лабораторные работы
 
