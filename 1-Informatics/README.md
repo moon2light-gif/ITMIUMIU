@@ -1,7 +1,5 @@
 # 💾Информатика
 
-<img alt="Info" src="https://github.com/moon2light-gif/ITMIUMIU/blob/main/.docs/_%20(4).gif" width="400" height="280">
-
 ## 📐Лабораторные работы
 
 1. [Лабораторная работа №1 (100/100)](./Lab1/);
