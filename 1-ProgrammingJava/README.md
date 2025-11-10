@@ -1,6 +1,6 @@
 # 💻Программирование
 
-<img alt="ProgJava" src="https://github.com/moon2light-gif/ITMIUMIU/blob/main/.docs/_%20(3).gif">
+<img alt="ProgJava" src="https://github.com/moon2light-gif/ITMIUMIU/blob/main/.docs/_%20(3).gif" height="240">
 
 ## Важное
 
