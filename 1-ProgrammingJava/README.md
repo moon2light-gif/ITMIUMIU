@@ -1,5 +1,7 @@
 # 💻Программирование
 
+<img alt="ProgJava" src="https://github.com/moon2light-gif/ITMIUMIU/blob/main/.docs/_%20(3).gif">
+
 ## Важное
 
 Сайт со всеми лекциями, лабораторными и методичками по программированию: [se.ifmo.ru/courses/programming](https://se.ifmo.ru/courses/programming)
