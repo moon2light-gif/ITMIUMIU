@@ -13,6 +13,6 @@
 2. [Аннотация №2 (24.09.2025)](./Annotations/Annotation_2.pdf)
 3. [Аннотация №3 (08.10.2025)](./Annotations/Annotation_3.pdf)
 4. [Аннотация №4 (22.10.2025)](./Annotations/Annotation_4.pdf)
-5. [Аннотация №4 (22.10.2025)](./Annotations/Annotation_5.pdf)
+5. [Аннотация №5 (22.10.2025)](./Annotations/Annotation_5.pdf)
 
 
