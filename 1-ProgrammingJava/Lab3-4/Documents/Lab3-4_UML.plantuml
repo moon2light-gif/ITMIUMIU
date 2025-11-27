@@ -1,0 +1,104 @@
+@startuml
+
+enum LightLevel {
+    OBSCURITY
+    DARK
+    BRIGHT
+    VERY_BRIGHT
+}
+enum WoodType {
+    OAK,
+    PINE,
+    BIRCH,
+    ASPEN
+}
+
+record Position {
+    +double x
+    +double y
+    +double z
+}
+
+interface Illuminable {
+    +void hide()
+    +void illuminate()
+}
+
+class NoFuelException 
+class NoItemException 
+
+class Main
+
+abstract class LightSource {
+    -isOn: boolean
+    -intensity: int
+    +public abstract void turnOn();
+    +public abstract void turnOff();
+}
+
+class Fireplace {
+    -logs: ArrayList<Log>
+    -pos: Position
+    +Fireplace(pos: Position)
+}
+
+class Lamp {
+    -fuel: double
+    -pos: Position
+    +Lamp(fuel: double, pos: Position)
+}
+
+class Item {
+    -name: String
+    -pos: Position
+    -visible: boolean
+    +Item(name: String, pos: Position)
+}
+
+class Workbench {
+    -items: ArrayList<Item>
+    +Workbench()
+}
+
+class Room {
+    -lightObjects: ArrayList<LightSource>
+    -workbench: Workbench
+    +Room(workbench: Workbench)
+}
+
+abstract class MainCharacter {
+    -name: String
+    -hairColor: String
+    -age: int
+    -pos: Position
+    +MainCharacter(name: String, hairColor: String, age: int, pos: Position)
+}
+
+class Carlson {
+    +Carlson(name: String, hairColor: String, age: int, pos: Position)
+}
+
+class Log {
+    -size: double
+    -wood: WoodType
+    +Log(size: double, wood: WoodType)
+}
+
+LightSource <|-- Fireplace
+LightSource <|-- Lamp
+Illuminable <|.. Item
+MainCharacter <|-- Carlson
+
+Room --> LightSource
+Workbench --> Item
+Fireplace --> Log
+Lamp --> Position
+Room --> Workbench
+Carlson --> Fireplace
+Carlson --> Lamp
+Item --> Position
+
+RuntimeException <|-- NoItemException
+Exception <|-- NoFuelException
+
+@enduml
