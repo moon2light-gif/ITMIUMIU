@@ -1,0 +1,25 @@
+\documentclass[12pt]{article}
+
+\usepackage[papersize={180mm,281mm}, left=4mm, right=4mm, top=2mm, bottom=13mm]{geometry} % поля страницы
+\usepackage[english, russian]{babel} % для русского
+\usepackage[T2A]{fontenc} % тоже для кириллицы
+\usepackage{graphicx} % Required for inserting images
+\usepackage{multicol} % для нескольких колонок 
+\graphicspath{{images/}} %configuring the graphicx package
+\usepackage{amsmath,amssymb} % для математических символов
+\usepackage{microtype} % для пробелов поменьше
+\usepackage[font={small}, justification=raggedright, singlelinecheck=false, labelsep=none]{caption} % для подписей к рисункам
+\usepackage{fancyhdr} % для настройки колонтитулов
+
+\fancyhf{}            % очистить колонтитулы
+\fancyfoot[L]{\textbf{\thepage}} % номер слева внизу, выделенный жирным шрифтом
+\pagestyle{fancy}
+
+\begin{document}
+    \newgeometry{top=2cm, bottom=0.5cm, left=1.5cm, right=1.5cm} % локальные поля для титульного листа
+    \input{title.tex} % ссылка на наш титульный лист
+    \restoregeometry % возвращаем геометрию для статьи, чтобы там всё осталось, как было
+    
+    \input{task.tex} % ссылка на саму статью
+    
+\end{document}
