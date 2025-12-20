@@ -1,0 +1,178 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper, top=1.5cm, bottom=1.5cm, left=1mm, right=2cm]{geometry}
+\usepackage[english, russian]{babel} % для русского
+\usepackage[T2A]{fontenc} % также для кириллицы
+\usepackage{amsmath,amssymb} % для математических символов
+\usepackage{graphicx} % Required for inserting images
+\usepackage{multicol} % для нескольких колонок 
+\usepackage{microtype} % для пробелов поменьше
+
+\usepackage{tikz} % для самодельных рисунков
+
+
+ 
+\begin{document}
+    \pagestyle{empty}
+    \setlength{\columnsep}{1pt} % расстояние между колонками
+
+    \hspace{7cm} % контроль отступа слева
+    {\centering 26 \qquad\qquad \textbf{КНИГА I ПРЕДЛ. II. ЗАДАЧА}}
+
+    \vspace{8mm}
+    \begin{multicols}{2}
+    
+    \begin{tikzpicture}
+        \draw[color=red!100, ultra thick] circle (80pt);
+        \draw[color=blue!100, ultra thick] (0.46,-0.98) circle (48pt);
+        \draw[color=orange!100, ultra thick] (0.46, -0.98) -- (1.2, -2.47);
+        \draw[densely dashed, color=red!100, ultra thick] (0.46, -0.98) -- (-0.04, 0.01);
+        \draw[densely dashed, color=black!100, ultra thick] (0.46, -0.98) -- (1.1,-0.09);
+        \draw[color=red!100, ultra thick] (-0.05, 0.02) -- (1.1,-0.09);
+        \draw[color=black!100, ultra thick] (0.46, -0.98) -- (-1.2,-0.98);
+        \draw[color=blue!100, ultra thick] (1.1,-0.09) -- (2.776, -0.27);
+        \node[right, font=\tiny] at (2.776, -0.27) {F};
+        \node[left, font=\tiny] at (-1.2, -0.98) {C};
+        \node[below, xshift=3pt, font=\tiny] at (1.2, -2.47) {E};
+        \node[below, xshift=-3pt, font=\tiny] at (0.46, -0.98) {B};
+        \node[left, yshift=4pt, xshift=4pt, font=\tiny] at (-0.05, 0.01) {D};
+        \node[above, xshift=3pt, yshift =-3pt, font=\tiny] at (1.1, -0.09) {A};
+    \end{tikzpicture}
+
+    \columnbreak % переходим на правую часть листа
+    
+    \noindent
+    \begin{minipage}[t]{0.1\textwidth}
+    \vspace{0pt}
+    \includegraphics[width=\linewidth]{image.png}
+    \end{minipage}
+    % raisebox{0.5ex} - выравнивает область tikz рисунка, 0.5ex - типографская единица измерения, половина высоты "x"
+    \noindent 
+    \begin{minipage}[t]{0.7\textwidth}
+    \vspace{0pt}
+    \textit{т данной точки} \begin{tikzpicture} \raisebox{0.5ex}{\draw[color=red!100, ultra thick] (-0.6,0) -- (0,0);
+    \draw[color=blue!100, ultra thick] (0,0) -- (0.6,0);}
+    \node[above, font=\tiny] at (0,0) {A};
+    \end{tikzpicture} \textit{отложить прямую,\\
+    равную данной прямой} \begin{tikzpicture} \raisebox{0.5ex}{\draw[color=black!100, ultra thick] (0,0) -- (1.2,0);}
+    \node[above, font=\tiny] at (0,0) {B}; \node[above, font=\tiny] at (1.2, 0) {C};
+    \end{tikzpicture} .\\
+    \end{minipage}
+
+    \vspace{1cm}
+
+    {\centering \noindent Проведем 
+    \begin{tikzpicture} 
+    \raisebox{0.5ex}{\draw[densely dashed, color=black!100, ultra thick](0,0) -- (1.2,0);}
+    \node[above, font=\tiny] at (0,0) {A};
+    \node[above, font=\tiny] at (1.2,0) {B};
+    \end{tikzpicture} 
+    (пост. I),\\
+    построим \begin{tikzpicture} 
+    \raisebox{-3.4ex}{\draw[densely dashed, color=red!100, ultra thick] (0,0) -- (0.52, -1);
+    \draw[densely dashed, color=black!100, ultra thick] (1.2, -0.08) -- (0.52, -1); 
+    \draw[color=red!100, ultra thick] (0,0) -- (1.2,-0.08);
+    \node[above, xshift=-3, yshift=-3pt, font=\tiny] at (0,0) {D};
+    \node[above, xshift=4pt, yshift=-4pt, font=\tiny] at (1.2, -0.08) {A};
+    \node[below, yshift=2pt, font=\tiny] at (0.52, -1) {B};}
+    \end{tikzpicture}
+    (пр. I.i),\\
+    \vspace{5mm}
+    продлим \begin{tikzpicture} 
+    \raisebox{0.5ex}{\draw[densely dashed, color=red!100, ultra thick] (0,0) -- (1.2,0); } 
+    \node[above, font=\tiny] at (0,0) {B};
+    \node[above, font=\tiny] at (1.2,0) {D};
+    \end{tikzpicture} (пост. II),\\}
+    
+    \noindent опишем \begin{tikzpicture}
+    \raisebox{-2.6ex}{\draw[color=blue!100, ultra thick] (0,0) circle (16pt);
+    \draw[color=black!100, ultra thick] (0,0) -- (-0.54,0);
+    \node[right, xshift=-3pt, font=\tiny] at (0,0) {B};
+    \node[left, xshift=1pt, font=\tiny] at (-0.54, 0) {C};}
+    \end{tikzpicture} (пост. III), и \begin{tikzpicture}
+    \raisebox{-4.5ex}{\draw[color=red!100, ultra thick] (0,0) circle (26pt);
+    \draw[densely dashed, color=red!100, ultra thick] (0,0) -- (0.15,-0.32);
+    \draw[color=yellow!100, ultra thick] (0.15,-0.32) -- (0.38, -0.8);
+    \node[above, xshift=-2pt, yshift=-3pt, font=\tiny] at (0,0) {D};
+    \node[below, xshift=3pt, font=\tiny] at (0.38,-0.8) {E};
+    } \end{tikzpicture} (пост. III);\\
+
+    \vspace{4mm}
+    
+    {\centering продлим \begin{tikzpicture} 
+    \raisebox{0.5ex}{\draw[color=red!100, ultra thick] (0,0) -- (1.2,0);}
+    \node[above, font=\tiny] at (0,0) {D};
+    \node[above, font=\tiny] at (1.2,0) {A};
+    \end{tikzpicture} (пост. II),\\
+    тогда искомая прямая это \begin{tikzpicture} \raisebox{0.5ex}{\draw[color=blue!100, ultra thick] (0,0) -- (1.2,0);} 
+    \node[above, font=\tiny] at (0,0) {A};
+    \node[above, font=\tiny] at (1.2,0) {F};
+    \end{tikzpicture} .\\}
+
+    \vspace{6mm} % небольшой отступ как в исходной странице
+
+    {\centering \noindent Поскольку \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=yellow!100, ultra thick] (0,0) -- (0.8,0);
+    \draw[densely dashed, color=red!100, ultra thick] (0.8,0) -- (1.2,0);}
+    \node[above, font=\tiny] at (0,0) {E};
+    \node[above, font=\tiny] at (1.2,0) {D};
+    \end{tikzpicture} $=$ \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=red!100, ultra thick] (0,0) -- (0.4,0);
+    \draw[color=blue!100, ultra thick] (0.4, 0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0,0) {D};
+    \node[above, font=\tiny] at (1.2,0) {F};
+    \end{tikzpicture} (опр. \textit{15}),\\
+    и \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[densely dashed, color=red!100, ultra thick] (0,0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0,0) {B};
+    \node[above, font=\tiny] at (1.2,0) {D};
+    \end{tikzpicture} $=$ \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=red!100, ultra thick] (0,0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0,0) {D};
+    \node[above, font=\tiny] at (1.2,0) {A};
+    \end{tikzpicture} (постр.),\\
+    $\therefore$ \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=yellow!100, ultra thick] (0,0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0,0) {B};
+    \node[above, font=\tiny] at (1.2,0) {E};
+    \end{tikzpicture} $=$ \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=blue!100, ultra thick] (0,0) -- (1.2, 0); }  
+    \node[above, font=\tiny] at (0,0) {A};
+    \node[above, font=\tiny] at (1.2,0) {F};
+    \end{tikzpicture} (акс. III),\\
+    но (опр. \textit{15}) \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=black!100, ultra thick] (0,0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0,0) {B};
+    \node[above, font=\tiny] at (1.2,0) {C};
+    \end{tikzpicture} $=$ \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=yellow!100, ultra thick] (0,0) -- (1.2, 0);} 
+    \node[above, font=\tiny] at (0,0) {B};
+    \node[above, font=\tiny] at (1.2,0) {E};
+    \end{tikzpicture} $=$ \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=blue!100, ultra thick] (0,0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0,0) {A};
+    \node[above, font=\tiny] at (1.2,0) {F};
+    \end{tikzpicture} .\\}
+
+    \vspace{5mm} % ещё отступ
+
+    $\therefore$ \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=blue!100, ultra thick] (0,0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0,0) {A};
+    \node[above, font=\tiny] at (1.2,0) {F};
+    \end{tikzpicture} проведенная из данной точки\\    
+    (\begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=red!100, ultra thick] (0,0) -- (0.6, 0); 
+    \draw[color=blue!100, ultra thick] (0.6,0) -- (1.2, 0);}
+    \node[above, font=\tiny] at (0.6,0) {A};
+    \end{tikzpicture}) равна данной прямой \begin{tikzpicture}
+    \raisebox{0.5ex}{\draw[color=black!100, ultra thick] (0,0) -- (1.2, 0); }
+    \node[above, font=\tiny] at (0,0) {B};
+    \node[above, font=\tiny] at (1.2,0) {C};
+    \end{tikzpicture} (акс. I).\\
+
+    \hfill ч.т.д.
+    
+    \end{multicols}
+    
+\end{document}
