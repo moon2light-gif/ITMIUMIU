@@ -1,4 +1,16 @@
 @startuml
+
+package "transport" {
+    class Request {
+        - commandName: String
+        - argument: String
+        - elem: Organization
+        + getCommandName(): String
+        + getArgument(): String
+        + getElem(): Organization
+    }
+}
+
 package "model" {
     class Address {
         - street: String
@@ -26,51 +38,36 @@ package "model" {
     }
 }
 
-package "transport" {
-    class Request {
-        - commandName: String
-        - argument: String
-        - elem: Organization
-        + getCommandName(): String
-        + getArgument(): String
-        + getElem(): Organization
-    }
-}
-
-package "service" {
-    class CommandManager {
-        - commands: Map<String, Command>
-        + getCommand(name: String): Command
-        + getCommands() : Map<String, Command>
-        + register(cmds: Command...) : void
-    }
-    
-    class RequestExecutor {
-        - commandManager: CommandManager
+package "commands" {
+    interface Command {
         + execute(request: Request)
+        + getName(): String
+        + getDescription(): String
+        + canAcceptObject(arg: String): boolean
+        + getArgumentType(): ArgumentType
+        + requiresObjectArgument(): boolean
     }
-
-    class CollectionManager {
-        - collection: LinkedList<Organization>
-        - initializationDate: LocalDateTime
-        - lastId: Long
-        - dumpManager: DumpManager
-        + add(org: Organization)
-        + clear()
-        + generateNextId(): Long
-        + updateLastId(id: Long)
-        + getById(id: Long): Organization
-        + fullNameIsUnique(input: String): boolean
-        + getCollection(): LinkedList<Organization>
-        + save() 
-        + getInfo(): String
+    abstract class AbstractCommand {
+        - name: String
+        - description: String
+        - collectionManager: CollectionManager
     }
-    class DumpManager {
-        - fileName: String
-        - xmlMapper: XmlMapper
-        + load(cm: CollectionManager)
-        + save(collection: LinkedList<Organization>)
-    }
+    class AddCommand
+    class AddIfMinCommand
+    class ClearCommand
+    class ExecuteScriptCommand
+    class ExitCommand
+    class FilterLessThanAnnualTurnover
+    class HeadCommand
+    class HelpCommand
+    class InfoCommand
+    class PrintFieldAscendingAnnualTurnoverCommand
+    class PrintUniqueOfficialAddressCommand
+    class RemoveByIdCommand
+    class RemoveFirstCommand
+    class SaveCommand
+    class ShowCommand
+    class UpdateCommand
 }
 
 package "utility" {
@@ -118,36 +115,40 @@ package "utility" {
     }
 }
 
-package "commands" {
-    interface Command {
+package "service" {
+    class CommandManager {
+        - commands: Map<String, Command>
+        + getCommand(name: String): Command
+        + getCommands() : Map<String, Command>
+        + register(cmds: Command...) : void
+    }
+    
+    class RequestExecutor {
+        - commandManager: CommandManager
         + execute(request: Request)
-        + getName(): String
-        + getDescription(): String
-        + canAcceptObject(arg: String): boolean
-        + getArgumentType(): ArgumentType
-        + requiresObjectArgument(): boolean
     }
-    abstract class AbstractCommand {
-        - name: String
-        - description: String
-        - collectionManager: CollectionManager
+
+    class CollectionManager {
+        - collection: LinkedList<Organization>
+        - initializationDate: LocalDateTime
+        - lastId: Long
+        - dumpManager: DumpManager
+        + add(org: Organization)
+        + clear()
+        + generateNextId(): Long
+        + updateLastId(id: Long)
+        + getById(id: Long): Organization
+        + fullNameIsUnique(input: String): boolean
+        + getCollection(): LinkedList<Organization>
+        + save() 
+        + getInfo(): String
     }
-    class AddCommand
-    class AddIfMinCommand
-    class ClearCommand
-    class ExecuteScriptCommand
-    class ExitCommand
-    class FilterLessThanAnnualTurnover
-    class HeadCommand
-    class HelpCommand
-    class InfoCommand
-    class PrintFieldAscendingAnnualTurnoverCommand
-    class PrintUniqueOfficialAddressCommand
-    class RemoveByIdCommand
-    class RemoveFirstCommand
-    class SaveCommand
-    class ShowCommand
-    class UpdateCommand
+    class DumpManager {
+        - fileName: String
+        - xmlMapper: XmlMapper
+        + load(cm: CollectionManager)
+        + save(collection: LinkedList<Organization>)
+    }
 }
 
 package "exceptions" {
@@ -188,6 +189,8 @@ ElementReader ..> Validator : <<use>>
 ElementReader ..> Parser : <<use>>
 ElementReader ..> Validatable : <<use>>
 ElementReader ..> InvalidInputException : <<throws>>
+
+Main ..> EnvNotFoundException : <<throws>>
 
 AbstractCommand ..|> Command
 AddCommand --|> AbstractCommand
