@@ -1,0 +1,218 @@
+@startuml
+package "model" {
+    class Address {
+        - street: String
+    }
+    class Organization {
+        - id: Long
+        - name: String
+        - coordinates: Coordinates
+        - creationDate: LocalDateTime
+        - annualTurnover: Float
+        - fullName: String
+        - type: OrganizationType
+        - officialAddress: Address
+    }
+    class Coordinates {
+        - x: float
+        - y: Long
+    }
+    enum OrganizationType {
+        - COMMERCIAL
+        - GOVERNMENT
+        - TRUST
+        - PRIVATE_LIMITED_COMPANY
+        - OPEN_JOINT_STOCK_COMPANY
+    }
+}
+
+package "transport" {
+    class Request {
+        - commandName: String
+        - argument: String
+        - elem: Organization
+        + getCommandName(): String
+        + getArgument(): String
+        + getElem(): Organization
+    }
+}
+
+package "service" {
+    class CommandManager {
+        - commands: Map<String, Command>
+        + getCommand(name: String): Command
+        + getCommands() : Map<String, Command>
+        + register(cmds: Command...) : void
+    }
+    
+    class RequestExecutor {
+        - commandManager: CommandManager
+        + execute(request: Request)
+    }
+
+    class CollectionManager {
+        - collection: LinkedList<Organization>
+        - initializationDate: LocalDateTime
+        - lastId: Long
+        - dumpManager: DumpManager
+        + add(org: Organization)
+        + clear()
+        + generateNextId(): Long
+        + updateLastId(id: Long)
+        + getById(id: Long): Organization
+        + fullNameIsUnique(input: String): boolean
+        + getCollection(): LinkedList<Organization>
+        + save() 
+        + getInfo(): String
+    }
+    class DumpManager {
+        - fileName: String
+        - xmlMapper: XmlMapper
+        + load(cm: CollectionManager)
+        + save(collection: LinkedList<Organization>)
+    }
+}
+
+package "utility" {
+    enum ArgumentType {
+        - NONE
+        - STRING
+        - LONG
+        - INT
+    }
+    class ConsoleManager {
+        - commandManager: CommandManager
+        - collectionManager: CollectionManager
+        - scanner: Scanner
+        - requestExecutor: RequestExecutor
+        - elementReader: ElementReader
+        + start():
+        + fileMode(fileName: String)
+        + processInput(scanner: Scanner, isFileMode: boolean)
+        + buildRequest(line: String, isFileMode: boolean): Request
+        + validateArgs(command: Command, arg: String): boolean
+    }
+
+    class ElementReader {
+        - scanner: Scanner
+        - isInteractive: boolean
+        + askName(): String
+        + askX(): Long
+    }
+    class Validator {
+        + validateName(name: String)
+        + validateX(x: Float)
+        + validateY(y: Long)
+        + validateAnnualTurnover(turnover: Integer)
+        + validateFullName(fullName: String, cm: CollectionManager)
+        + validateAddress(address: Address)
+        + validateCreationDate(time: LocalDateTime)
+        + validateStreet(street String)
+        + validateOrganization(org: Organization, cm: CollectionManager)
+    }
+    interface Parser {
+        + parse(input: String): T
+    }
+    interface Validatable {
+        + validate(value: T): boolean
+    }
+}
+
+package "commands" {
+    interface Command {
+        + execute(request: Request)
+        + getName(): String
+        + getDescription(): String
+        + canAcceptObject(arg: String): boolean
+        + getArgumentType(): ArgumentType
+        + requiresObjectArgument(): boolean
+    }
+    abstract class AbstractCommand {
+        - name: String
+        - description: String
+        - collectionManager: CollectionManager
+    }
+    class AddCommand
+    class AddIfMinCommand
+    class ClearCommand
+    class ExecuteScriptCommand
+    class ExitCommand
+    class FilterLessThanAnnualTurnover
+    class HeadCommand
+    class HelpCommand
+    class InfoCommand
+    class PrintFieldAscendingAnnualTurnoverCommand
+    class PrintUniqueOfficialAddressCommand
+    class RemoveByIdCommand
+    class RemoveFirstCommand
+    class SaveCommand
+    class ShowCommand
+    class UpdateCommand
+}
+
+package "exceptions" {
+    exception BaseException
+    exception EnvNotFoundException
+    exception InvalidInputException
+    exception ScriptRecursionException
+}
+
+class Main
+
+Organization *-- Coordinates
+Organization *-- Address
+Organization o-- OrganizationType
+
+Main ..> ConsoleManager : <<create>>
+Main ..> CommandManager : <<create>>
+Main ..> CollectionManager : <<create>>
+Main ..> DumpManager : <<create>>
+Main ..> RequestExecutor : <<create>>
+Main ..> ElementReader : <<create>>
+
+ConsoleManager --> RequestExecutor
+ConsoleManager --> ElementReader
+ConsoleManager --> CommandManager
+ConsoleManager --> CollectionManager
+ConsoleManager ..> Request : <<create>>
+ConsoleManager ..> ArgumentType : <<use>>
+
+RequestExecutor --> CommandManager
+RequestExecutor ..> Request : <<use>>
+RequestExecutor ..> Command : <<invokes execute()>>
+
+CollectionManager --> DumpManager
+DumpManager ..> CollectionManager : <<fills>>
+
+ElementReader ..> Validator : <<use>>
+ElementReader ..> Parser : <<use>>
+ElementReader ..> Validatable : <<use>>
+ElementReader ..> InvalidInputException : <<throws>>
+
+AbstractCommand ..|> Command
+AddCommand --|> AbstractCommand
+AddIfMinCommand --|> AbstractCommand
+ClearCommand --|> AbstractCommand
+ExecuteScriptCommand --|> AbstractCommand
+ExitCommand --|> AbstractCommand
+FilterLessThanAnnualTurnover --|> AbstractCommand
+HeadCommand --|> AbstractCommand
+HelpCommand --|> AbstractCommand
+InfoCommand --|> AbstractCommand
+PrintFieldAscendingAnnualTurnoverCommand --|> AbstractCommand
+PrintUniqueOfficialAddressCommand --|> AbstractCommand
+RemoveByIdCommand --|> AbstractCommand
+RemoveFirstCommand --|> AbstractCommand
+SaveCommand --|> AbstractCommand
+ShowCommand --|> AbstractCommand
+UpdateCommand --|> AbstractCommand
+
+AbstractCommand --> CollectionManager
+ExecuteScriptCommand --> ConsoleManager : <<calls fileMode()>>
+ExecuteScriptCommand ..> ScriptRecursionException : <<throws>>
+
+EnvNotFoundException --|> BaseException
+InvalidInputException --|> BaseException
+ScriptRecursionException --|> BaseException
+
+@enduml
