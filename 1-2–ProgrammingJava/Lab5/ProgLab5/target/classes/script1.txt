@@ -1,0 +1,5 @@
+info
+show
+faf
+execute_script src/main/resources/script2.txt
+save
