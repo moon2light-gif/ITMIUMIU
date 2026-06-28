@@ -1,0 +1,97 @@
+.root {
+    -fx-background-color: #f0f0f0;
+    -fx-font-family: "System";
+}
+
+.auth-card {
+    -fx-background-color: white;
+    -fx-background-radius: 18;
+    -fx-border-radius: 18;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 12, 0, 0, 4);
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: transparent;
+}
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 15px;
+    -fx-padding: 8 16 8 16;
+}
+.tab-pane .tab:selected {
+    -fx-background-color: transparent;
+}
+.tab-pane .tab:selected .tab-label {
+    -fx-font-weight: bold;
+}
+.tab-pane .tab:selected {
+    -fx-border-color: transparent transparent black transparent;
+    -fx-border-width: 0 0 1.8 0;
+}
+
+.auth-field {
+    -fx-pref-height: 38px;
+    -fx-font-size: 14px;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1;
+    -fx-background-color: white;
+    -fx-padding: 0 10 0 10;
+}
+
+.login-field {
+    -fx-font-size: 13px;
+}
+
+.password-field {
+    -fx-font-size: 13px;
+}
+
+
+.auth-field:focused {
+    -fx-border-color: #888888;
+}
+
+.auth-button {
+    -fx-pref-height: 42px;
+    -fx-font-size: 15px;
+    -fx-background-color: #1a1a1a;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.auth-button:hover {
+    -fx-background-color: #333333;
+}
+
+.error-label {
+    -fx-text-fill: red;
+    -fx-font-size: 13px;
+}
+
+.auth-separator {
+    -fx-padding: 8 0 8 0;
+}
+
+.forgot-link {
+    -fx-text-fill: #555555;
+    -fx-font-size: 13px;
+    -fx-border-color: transparent;
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-background-color: transparent;
+}
+
+.lang-button {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 4 10 4 10;
+}

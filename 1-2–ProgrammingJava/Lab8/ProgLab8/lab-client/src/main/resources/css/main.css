@@ -1,0 +1,202 @@
+.root {
+    -fx-background-color: #f0f0f0;
+    -fx-font-family: "System";
+}
+
+.topbar {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #dee2e6 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.user-label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+}
+.topbar-btn {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 5 14 5 14;
+}
+.topbar-btn:hover {
+    -fx-background-color: #f1f3f5;
+}
+.lang-button {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 4 10 4 10;
+}
+
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-background-color: white;
+}
+.tab-pane .tab {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-font-size: 14px;
+    -fx-padding: 8 18 8 18;
+}
+.tab-pane .tab:selected {
+    -fx-border-color: transparent transparent black transparent;
+    -fx-border-width: 0 0 2 0;
+}
+.tab-pane .tab:selected .tab-label {
+    -fx-font-weight: bold;
+}
+.tab-pane:focused > .tab-header-area > .headers-region > .tab:selected .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.toolbar {
+    -fx-background-color: white;
+    -fx-border-color: transparent transparent #e9ecef transparent;
+    -fx-border-width: 0 0 1 0;
+}
+.toolbar-btn {
+    -fx-background-color: white;
+    -fx-border-color: #cccccc;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 6 14 6 14;
+}
+.toolbar-btn:hover {
+    -fx-background-color: #f1f3f5;
+}
+.primary-btn {
+    -fx-background-color: #1a1a1a;
+    -fx-text-fill: white;
+    -fx-border-color: #1a1a1a;
+}
+.primary-btn:hover {
+    -fx-background-color: #333333;
+}
+
+.main-table {
+    -fx-background-color: white;
+    -fx-border-color: #dee2e6;
+    -fx-table-cell-border-color: #eef0f2;
+}
+.main-table .column-header-background {
+    -fx-background-color: #f8f9fa;
+}
+.main-table .column-header,
+.main-table .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: #dee2e6;
+    -fx-border-width: 0 1 1 0;
+    -fx-size: 64px;
+}
+.col-head {
+    -fx-padding: 4 4 4 4;
+}
+.sort-label {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #343a40;
+    -fx-cursor: hand;
+}
+.sort-label:hover {
+    -fx-text-fill: #000000;
+    -fx-underline: true;
+}
+.filter-field {
+    -fx-font-size: 11px;
+    -fx-pref-height: 24px;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #ced4da;
+    -fx-background-color: white;
+    -fx-max-width: 110px;
+}
+.filter-field:focused {
+    -fx-border-color: #1a1a1a;
+}
+.main-table .table-row-cell {
+    -fx-cell-size: 30px;
+}
+.main-table .table-row-cell:selected {
+    -fx-background-color: #e7f1ff;
+    -fx-text-fill: #212529;
+}
+
+.footer-label {
+    -fx-alignment: center;
+    -fx-text-fill: #868e96;
+    -fx-font-size: 12px;
+    -fx-padding: 8 0 8 0;
+    -fx-background-color: white;
+    -fx-border-color: #e9ecef transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+}
+
+.map-container {
+    -fx-background-color: #e9ecef;
+}
+.city-map {
+    -fx-background-color: #eef2e6;
+}
+.map-hint {
+    -fx-fill: #495057;
+}
+
+.console-pane {
+    -fx-background-color: #f1f3f5;
+}
+.console-output {
+    -fx-font-family: "Consolas", "Monospaced";
+    -fx-font-size: 13px;
+}
+.console-output .content {
+    -fx-background-color: white;
+}
+.console-output {
+    -fx-control-inner-background: white;
+    -fx-text-fill: #212529;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+.console-caret {
+    -fx-font-family: "Consolas";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #6f7b86;
+}
+.console-input {
+    -fx-background-color: white;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-text-fill: #212529;
+    -fx-font-family: "Consolas";
+    -fx-font-size: 13px;
+    -fx-pref-height: 34px;
+}
+.console-input:focused {
+    -fx-border-color: #1a1a1a;
+}
+
+.form-pane {
+    -fx-background-color: white;
+}
+.form-label {
+    -fx-font-size: 13px;
+    -fx-text-fill: #343a40;
+}
+.dialog-pane {
+    -fx-background-color: white;
+}
+.dialog-pane .button {
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}

@@ -1,0 +1,30 @@
+<LinkedList>
+  <item>
+    <id>2</id>
+    <name>Hello</name>
+    <coordinates>
+      <x>24.0</x>
+      <y>32</y>
+    </coordinates>
+    <creationDate>2026-05-10T15:33:03.128026</creationDate>
+    <annualTurnover>212</annualTurnover>
+    <fullName>fsfs</fullName>
+    <officialAddress>
+      <street>afdaf</street>
+    </officialAddress>
+  </item>
+  <item>
+    <id>3</id>
+    <name>1</name>
+    <coordinates>
+      <x>311.0</x>
+      <y>31</y>
+    </coordinates>
+    <creationDate>2026-05-10T14:18:50.641465</creationDate>
+    <annualTurnover>21</annualTurnover>
+    <fullName>21</fullName>
+    <officialAddress>
+      <street>fdsfa</street>
+    </officialAddress>
+  </item>
+</LinkedList>

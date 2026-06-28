@@ -1,0 +1,4 @@
+info
+show
+faf
+execute_script lab-server/src/main/resources/script2.txt
