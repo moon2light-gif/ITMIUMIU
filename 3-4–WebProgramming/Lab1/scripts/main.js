@@ -141,6 +141,18 @@ function drawPoint(ctx) {
   ctx.stroke();
 }
 
+// Функция для кнопки x, зажата может быть только одна
+function setupXButtons() {
+  const buttons = document.querySelectorAll(".x-btn");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      showError("x-error", "");
+    });
+  });
+}
+
 // Функция, которая выключает остальные чекбоксы, если один уже выбран
 function setupCheckboxBehavior() {
   const boxes = document.querySelectorAll(".r-checkbox");
@@ -165,7 +177,7 @@ function validateForm() {
   clearErrors();
   let ok = true;
 
-  const selectedX = document.querySelector('input[name="x-coord"]:checked');
+  const selectedX = document.querySelector(".x-btn.active");
   if (!selectedX) {
     showError("x-error", "Выберите координату X!");
     ok = false;
@@ -299,6 +311,7 @@ function playFeedbackAudio(isHit) {
 // Сборка результатов
 document.addEventListener("DOMContentLoaded", () => {
   loadResults();
+  setupXButtons();
   setupCheckboxBehavior();
   drawScene();
   document

@@ -127,6 +127,26 @@
         background-color: #1c2c36;
       }
 
+      .x-btn {
+        padding: 5%;
+        margin: 1%;
+        font-size: 15px;
+        cursor: pointer;
+        background-color: #e0e0e0;
+        color: #000000d9;
+        border: solid rgb(46, 77, 84);
+        border-radius: 18%;
+      }
+
+      .x-btn:hover {
+        background-color: #cfd8da;
+      }
+
+      .x-btn.active {
+        background-color: #48575b;
+        color: #fff;
+      }
+
       /* Селектор класса для сообщений об ошибках */
       .error-message {
         color: #d32f2f;
@@ -200,90 +220,22 @@
 
               <tr>
                 <td id="x-button-group-data" colspan="2">
-                  <label class="x-label" for="x-button-group-data"
-                    ><b>Изменение X:</b></label
-                  ><br />
-
-                  <input
-                    type="radio"
-                    id="x1"
-                    name="x-coord"
-                    value="-2"
-                    required
-                  />
-                  <label for="x1">-2</label>
-
-                  <input
-                    type="radio"
-                    id="x2"
-                    name="x-coord"
-                    value="-1.5"
-                    required
-                  />
-                  <label for="x2">-1.5</label>
-
-                  <input
-                    type="radio"
-                    id="x3"
-                    name="x-coord"
-                    value="-1"
-                    required
-                  />
-                  <label for="x3">-1</label>
-
-                  <input
-                    type="radio"
-                    id="x4"
-                    name="x-coord"
-                    value="-0.5"
-                    required
-                  />
-                  <label for="x4">-0.5</label>
-
-                  <input
-                    type="radio"
-                    id="x5"
-                    name="x-coord"
-                    value="0"
-                    required
-                  />
-                  <label for="x5">0</label>
-
-                  <input
-                    type="radio"
-                    id="x6"
-                    name="x-coord"
-                    value="0.5"
-                    required
-                  />
-                  <label for="x6">0.5</label>
-
-                  <input
-                    type="radio"
-                    id="x7"
-                    name="x-coord"
-                    value="1"
-                    required
-                  />
-                  <label for="x7">1</label>
-
-                  <input
-                    type="radio"
-                    id="x8"
-                    name="x-coord"
-                    value="1.5"
-                    required
-                  />
-                  <label for="x8">1.5</label>
-
-                  <input
-                    type="radio"
-                    id="x9"
-                    name="x-coord"
-                    value="2"
-                    required
-                  />
-                  <label for="x9">2</label>
+                  <div id="x-buttons">
+                    <button type="button" class="x-btn" value="-2">-2</button>
+                    <button type="button" class="x-btn" value="-1.5">
+                      -1.5
+                    </button>
+                    <button type="button" class="x-btn" value="-1">-1</button>
+                    <button type="button" class="x-btn" value="-0.5">
+                      -0.5
+                    </button>
+                    <button type="button" class="x-btn" value="0">0</button>
+                    <button type="button" class="x-btn" value="0.5">0.5</button>
+                    <button type="button" class="x-btn" value="1">1</button>
+                    <button type="button" class="x-btn" value="1.5">1.5</button>
+                    <button type="button" class="x-btn" value="2">2</button>
+                  </div>
+                  <div id="x-error" class="error-message"></div>
                 </td>
               </tr>
 
