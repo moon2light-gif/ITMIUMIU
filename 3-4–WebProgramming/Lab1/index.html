@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Лабораторная работа №1</title>
+
+    <audio id="audioOnHit" src="audio/audioOnHit.mp3"></audio>
+    <audio id="audioOnLose" src="audio/audioOnMiss.mp3"></audio>
+
+    <script src="scripts/main.js"></script>
+
+    <!--Стилизация внутри веб-документа-->
+    <style>
+      body {
+        font-family: sans-serif;
+        background-color: #f4f4f9;
+        margin: 0;
+        padding: 0.5%;
+      }
+
+      .outer-table > tbody > tr > td {
+        border: none;
+        vertical-align: top;
+      }
+
+      .side-cell {
+        width: 18%;
+      }
+
+      .side-cell img {
+        width: 100%;
+        height: auto;
+      }
+
+      /* Вот это селектор элемента */
+      .central-cell,
+      table {
+        margin: 0 auto;
+      }
+
+      th,
+      td {
+        margin: 0 auto;
+        border: 1px solid black;
+        font-family:
+          "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        font-size: 18px;
+        border-color: rgb(46, 77, 84);
+      }
+
+      /* Вот это селектор класса для шапки сайта */
+      .top-header {
+        border-radius: 5px;
+        font-family: cursive, sans-serif;
+        font-style: italic;
+        color: #05090a;
+        text-align: left;
+        padding: 2%;
+        font-size: 20px;
+        background-color: rgb(224, 224, 224);
+      }
+
+      table tr td {
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .canvas-container {
+        padding: 2%;
+        border-radius: 5px;
+        background-color: #ecf5f844;
+      }
+
+      .canvas-container canvas {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        max-width: 80%;
+        height: auto;
+      }
+
+      .header {
+        background-color: rgba(180, 207, 206, 0.749);
+        margin: 1px, 1px, 1px, 0;
+        font-weight: bold;
+        border-radius: 6px;
+      }
+
+      #y-field-data,
+      #r-field-data,
+      #x-button-group-data {
+        padding-right: 5px;
+        padding-left: 5px;
+        padding-top: 10px;
+        padding-bottom: 50px;
+        border-radius: 4px;
+      }
+
+      #x-button-group-data label,
+      #r-field-data label {
+        padding: 0.5%, 1%;
+        display: inline-block;
+      }
+
+      /* Отступ для одного из элементов ввода */
+      #y-field {
+        width: 75%;
+        padding: 1.5%;
+        margin-top: 1%;
+        margin-bottom: 1%;
+        box-sizing: border-box;
+      }
+
+      #submit-button {
+        padding: 2% 15%;
+        margin: 1.5%;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #48575b;
+        color: #ffffff;
+        border: none;
+        border-radius: 4px;
+      }
+
+      #submit-button:hover {
+        background-color: #1c2c36;
+      }
+
+      /* Селектор класса для сообщений об ошибках */
+      .error-message {
+        color: #d32f2f;
+        font-size: 13px;
+        padding-top: 1%;
+        font-weight: bold;
+      }
+
+      .x-label,
+      .y-label,
+      .r-label {
+        padding-bottom: 2%;
+        padding-top: 1%;
+      }
+
+      /* Селектор дочерних элементов таблицы результатов */
+      .results-row td,
+      .result-labels td {
+        font-size: 14px;
+        padding: 1%;
+      }
+
+      .result-labels td {
+        background-color: rgba(125, 153, 155, 0.993);
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      span {
+        text-align: right;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form id="point-form">
+      <table class="outer-table">
+        <tr>
+          <td class="side-cell">
+            <img src="images/animation.gif" alt="Gif слева" />
+          </td>
+
+          <td class="center-cell">
+            <!--Табличная вёрстка моего веб-сайта-->
+            <table
+              border="1"
+              cellspacing="1"
+              cellpadding="5"
+              style="max-width: 1000px; table-layout: fixed"
+            >
+              <!--Шапка сайта с указанием всего нужного-->
+              <tr>
+                <th class="top-header" colspan="5">
+                  ФИО: Крамарь Михаил Романович | Группа: P3213 | Вариант: 12704
+                </th>
+              </tr>
+
+              <tr>
+                <th class="header" width="65%" colspan="3">
+                  Область координат
+                </th>
+                <th class="header" width="35%" colspan="2">Параметры</th>
+              </tr>
+
+              <!--Ряд ячеек, содержащий Canvas-->
+              <tr>
+                <td rowspan="5" colspan="3" class="canvas-container">
+                  <canvas id="MyFirstCanvas" width="540" height="540"> </canvas>
+                </td>
+              </tr>
+
+              <tr>
+                <td id="x-button-group-data" colspan="2">
+                  <label class="x-label" for="x-button-group-data"
+                    ><b>Изменение X:</b></label
+                  ><br />
+
+                  <input
+                    type="radio"
+                    id="x1"
+                    name="x-coord"
+                    value="-2"
+                    required
+                  />
+                  <label for="x1">-2</label>
+
+                  <input
+                    type="radio"
+                    id="x2"
+                    name="x-coord"
+                    value="-1.5"
+                    required
+                  />
+                  <label for="x2">-1.5</label>
+
+                  <input
+                    type="radio"
+                    id="x3"
+                    name="x-coord"
+                    value="-1"
+                    required
+                  />
+                  <label for="x3">-1</label>
+
+                  <input
+                    type="radio"
+                    id="x4"
+                    name="x-coord"
+                    value="-0.5"
+                    required
+                  />
+                  <label for="x4">-0.5</label>
+
+                  <input
+                    type="radio"
+                    id="x5"
+                    name="x-coord"
+                    value="0"
+                    required
+                  />
+                  <label for="x5">0</label>
+
+                  <input
+                    type="radio"
+                    id="x6"
+                    name="x-coord"
+                    value="0.5"
+                    required
+                  />
+                  <label for="x6">0.5</label>
+
+                  <input
+                    type="radio"
+                    id="x7"
+                    name="x-coord"
+                    value="1"
+                    required
+                  />
+                  <label for="x7">1</label>
+
+                  <input
+                    type="radio"
+                    id="x8"
+                    name="x-coord"
+                    value="1.5"
+                    required
+                  />
+                  <label for="x8">1.5</label>
+
+                  <input
+                    type="radio"
+                    id="x9"
+                    name="x-coord"
+                    value="2"
+                    required
+                  />
+                  <label for="x9">2</label>
+                </td>
+              </tr>
+
+              <!--Ряд с полем для ввода координаты Y-->
+              <tr>
+                <td id="y-field-data" colspan="2">
+                  <label for="y-field-data" class="y-label"
+                    ><b>Изменение Y (-3...3):</b></label
+                  ><br />
+                  <input
+                    type="text"
+                    id="y-field"
+                    name="y-field"
+                    placeholder="Число от -3 до 3"
+                    maxlength="10"
+                    style="width: 80%"
+                  />
+                  <div id="y-error" class="error-message"></div>
+                </td>
+              </tr>
+
+              <!--Тут ряд с ячейкой в виде чекбокса для изменения R-->
+              <tr>
+                <td id="r-field-data" colspan="2">
+                  <label for="r-field-data" class="r-label"
+                    ><b>Изменение R:</b></label
+                  ><br />
+
+                  <input
+                    type="checkbox"
+                    class="r-checkbox"
+                    id="R1"
+                    name="r-value"
+                    value="1"
+                  />
+                  <label for="R1">1</label>
+
+                  <input
+                    type="checkbox"
+                    class="r-checkbox"
+                    id="R2"
+                    name="r-value"
+                    value="2"
+                  />
+                  <label for="R2">2</label>
+
+                  <input
+                    type="checkbox"
+                    class="r-checkbox"
+                    id="R3"
+                    name="r-value"
+                    value="3"
+                  />
+                  <label for="R3">3</label>
+
+                  <input
+                    type="checkbox"
+                    class="r-checkbox"
+                    id="R4"
+                    name="r-value"
+                    value="4"
+                  />
+                  <label for="R4">4</label>
+
+                  <input
+                    type="checkbox"
+                    class="r-checkbox"
+                    id="R5"
+                    name="r-value"
+                    value="5"
+                  />
+                  <label for="R5">5</label>
+                  <div id="r-error" class="error-message"></div>
+                </td>
+              </tr>
+
+              <!--Кнопка отправить резы-->
+              <tr>
+                <td id="submit-button-data" colspan="2">
+                  <input type="submit" id="submit-button" value="Отправить" />
+                </td>
+              </tr>
+
+              <!--Заголовок таблицы результатов-->
+              <tr>
+                <th class="header" colspan="5">Таблица результатов</th>
+              </tr>
+
+              <!--Ряд с подписью результатов-->
+              <tr class="result-labels">
+                <td>Значение X</td>
+                <td>Значение Y</td>
+                <td>Значение R</td>
+                <td>Результат</td>
+                <td>Время отправки</td>
+              </tr>
+
+              <!--Результаты-->
+              <tbody id="result-table-body"></tbody>
+            </table>
+          </td>
+
+          <td class="side-cell">
+            <img src="images/animation.gif" alt="Gif справа" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
