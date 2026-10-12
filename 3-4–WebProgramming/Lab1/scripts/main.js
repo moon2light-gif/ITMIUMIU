@@ -1,4 +1,4 @@
-const STORAGE_KEY = "lab1_history";
+const STORAGE_KEY = "!!!mishka_lab1_history!!!";
 const SIZE = 540; // Размер Canvas в px
 const MID = SIZE / 2; // Начало координат
 
@@ -284,6 +284,7 @@ function readHistory() {
   }
 }
 
+// Метод сохранения записи в localStorage
 function saveResult(record) {
   const history = readHistory();
   history.push(record);

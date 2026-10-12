@@ -127,15 +127,16 @@
         background-color: #1c2c36;
       }
 
+      /* Дизайн для x-кнопок */
       .x-btn {
-        padding: 5%;
+        padding: 4%;
         margin: 1%;
         font-size: 15px;
         cursor: pointer;
         background-color: #e0e0e0;
         color: #000000d9;
         border: solid rgb(46, 77, 84);
-        border-radius: 18%;
+        border-radius: 20%;
       }
 
       .x-btn:hover {
@@ -182,42 +183,40 @@
   </head>
 
   <body>
-    <form id="point-form">
-      <table class="outer-table">
-        <tr>
-          <td class="side-cell">
-            <img src="images/animation.gif" alt="Gif слева" />
-          </td>
+    <table class="outer-table">
+      <tr>
+        <td class="side-cell">
+          <img src="images/animation.gif" alt="Gif слева" />
+        </td>
 
-          <td class="center-cell">
-            <!--Табличная вёрстка моего веб-сайта-->
-            <table
-              border="1"
-              cellspacing="1"
-              cellpadding="5"
-              style="max-width: 1000px; table-layout: fixed"
-            >
-              <!--Шапка сайта с указанием всего нужного-->
-              <tr>
-                <th class="top-header" colspan="5">
-                  ФИО: Крамарь Михаил Романович | Группа: P3213 | Вариант: 12704
-                </th>
-              </tr>
+        <td class="center-cell">
+          <!--Табличная вёрстка моего веб-сайта-->
+          <table
+            border="1"
+            cellspacing="1"
+            cellpadding="5"
+            style="max-width: 2000px; min-width: 500px; table-layout: fixed"
+          >
+            <!--Шапка сайта с указанием всего нужного-->
+            <tr>
+              <th class="top-header" colspan="5">
+                ФИО: Крамарь Михаил Романович | Группа: P3213 | Вариант: 12704
+              </th>
+            </tr>
 
-              <tr>
-                <th class="header" width="65%" colspan="3">
-                  Область координат
-                </th>
-                <th class="header" width="35%" colspan="2">Параметры</th>
-              </tr>
+            <tr>
+              <th class="header" width="65%" colspan="3">Область координат</th>
+              <th class="header" width="35%" colspan="2">Параметры</th>
+            </tr>
 
-              <!--Ряд ячеек, содержащий Canvas-->
-              <tr>
-                <td rowspan="5" colspan="3" class="canvas-container">
-                  <canvas id="MyFirstCanvas" width="540" height="540"> </canvas>
-                </td>
-              </tr>
+            <!--Ряд ячеек, содержащий Canvas-->
+            <tr>
+              <td rowspan="5" colspan="3" class="canvas-container">
+                <canvas id="MyFirstCanvas" width="540" height="540"> </canvas>
+              </td>
+            </tr>
 
+            <form id="point-form">
               <tr>
                 <td id="x-button-group-data" colspan="2">
                   <div id="x-buttons">
@@ -242,8 +241,7 @@
               <!--Ряд с полем для ввода координаты Y-->
               <tr>
                 <td id="y-field-data" colspan="2">
-                  <label for="y-field-data" class="y-label"
-                    ><b>Изменение Y (-3...3):</b></label
+                  <label class="y-label"><b>Изменение Y (-3...3):</b></label
                   ><br />
                   <input
                     type="text"
@@ -260,8 +258,7 @@
               <!--Тут ряд с ячейкой в виде чекбокса для изменения R-->
               <tr>
                 <td id="r-field-data" colspan="2">
-                  <label for="r-field-data" class="r-label"
-                    ><b>Изменение R:</b></label
+                  <label class="r-label"><b>Изменение R:</b></label
                   ><br />
 
                   <input
@@ -318,31 +315,31 @@
                   <input type="submit" id="submit-button" value="Отправить" />
                 </td>
               </tr>
+            </form>
 
-              <!--Заголовок таблицы результатов-->
-              <tr>
-                <th class="header" colspan="5">Таблица результатов</th>
-              </tr>
+            <!--Заголовок таблицы результатов-->
+            <tr>
+              <th class="header" colspan="5">Таблица результатов</th>
+            </tr>
 
-              <!--Ряд с подписью результатов-->
-              <tr class="result-labels">
-                <td>Значение X</td>
-                <td>Значение Y</td>
-                <td>Значение R</td>
-                <td>Результат</td>
-                <td>Время отправки</td>
-              </tr>
+            <!--Ряд с подписью результатов-->
+            <tr class="result-labels">
+              <td>Значение X</td>
+              <td>Значение Y</td>
+              <td>Значение R</td>
+              <td>Результат</td>
+              <td>Время отправки</td>
+            </tr>
 
-              <!--Результаты-->
-              <tbody id="result-table-body"></tbody>
-            </table>
-          </td>
+            <!--Результаты-->
+            <tbody id="result-table-body"></tbody>
+          </table>
+        </td>
 
-          <td class="side-cell">
-            <img src="images/animation.gif" alt="Gif справа" />
-          </td>
-        </tr>
-      </table>
-    </form>
+        <td class="side-cell">
+          <img src="images/animation.gif" alt="Gif справа" />
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
