@@ -2,5 +2,6 @@
 *.class
 *.pages
 
+/.idea
 server/target
 server/.idea
