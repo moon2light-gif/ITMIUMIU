@@ -1,0 +1,6 @@
+*.iml
+*.class
+*.pages
+
+server/target
+server/.idea

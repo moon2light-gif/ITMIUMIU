@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Лабораторная работа №2</title>
+
+    <audio id="audioOnHit" src="audio/audioOnHit.mp3"></audio>
+    <audio id="audioOnLose" src="audio/audioOnMiss.mp3"></audio>
+    <audio id="audioOnInvalidInput" src="audio/audioOnInvalidData.mp3"></audio>
+
+    <script type="module" src="scripts/main.js?v=4"></script>
+
+    <!--Стилизация внутри веб-документа-->
+    <link rel="stylesheet" href="styles/style.css" />
+  </head>
+
+  <body>
+    <table class="outer-table">
+      <tr>
+        <td class="side-cell">
+          <img src="images/LogoITMO.png" alt="Контора"/>
+          <img class="side-gif" src="images/binance.gif" alt="Gif слева" />
+          <img src="images/YandexPicture.jpg" alt="Реклама Яндекс" />
+          
+        </td>
+
+        <td class="center-cell">
+          <!--Табличная вёрстка моего веб-сайта-->
+          <table
+            border="1"
+            cellspacing="1"
+            cellpadding="5"
+            style="max-width: 2000px; min-width: 500px; table-layout: fixed"
+          >
+            <!--Шапка сайта с указанием всего нужного-->
+            <tr>
+              <th class="top-header" colspan="6">
+                <div style="display: flex; justify-content: space-between; width: 100%;">
+                <span>ФИО: Крамарь Михаил Романович</span>
+                <span>Группа: P3213 | Вариант: 13</span>
+                </div>
+              </th>
+            </tr>
+
+            <tr>
+              <th class="header" width="65%" colspan="4">Область координат</th>
+              <th class="header" width="35%" colspan="2">Параметры</th>
+            </tr>
+
+            <!--Ряд ячеек, содержащий Canvas-->
+            <tr>
+              <td rowspan="5" colspan="4" class="canvas-container">
+                <canvas id="MyFirstCanvas" width="540" height="540"> </canvas>
+              </td>
+            </tr>
+
+            <form id="point-form" method="GET">
+
+              <tr>
+                <td id="x-button-group-data" colspan="2">
+                  <label for="x-buttons" class="x-label"><b>Изменение X:</b></label>
+                  <div id="x-buttons">
+                    <input type="radio" id="x-btn-1"  name="radio-x" value="-3">-3</input>
+                    <input type="radio" id="x-btn-2"  name="radio-x" value="-2">-2</input>
+                    <input type="radio" id="x-btn-3"  name="radio-x" value="-1">-1</input>
+                    <input type="radio" id="x-btn-4"  name="radio-x" value="0">0</input>
+                    <input type="radio" id="x-btn-5"  name="radio-x" value="1">1</input>
+                    <input type="radio" id="x-btn-6"  name="radio-x" value="2">2</input>
+                    <input type="radio" id="x-btn-7"  name="radio-x" value="3">3</input>
+                    <input type="radio" id="x-btn-8"  name="radio-x" value="4">4</input>
+                    <input type="radio" id="x-btn-9"  name="radio-x" value="5">5</input>
+                  </div>
+                  <!-- Блок для отображения ошибок при валидации-->
+                  <div id="x-error" class="error-message"></div>
+                </td>
+              </tr>
+
+              <!--Ряд с полем для ввода координаты Y-->
+              <tr>
+                <td id="y-field-data" colspan="2">
+                  <label class="y-label"><b>Изменение Y (-5...3):</b></label
+                  ><br />
+                  <input
+                    type="text"
+                    maxlength="6"
+                    id="y-field"
+                    name="y-field"
+                    placeholder="Вещественное число от -5 до 3"
+                    maxlength="10"
+                    style="width: 80%"
+                  />
+                  <div id="y-error" class="error-message"></div>
+                </td>
+              </tr>
+
+              <!--Ряд с полем для ввода значения R-->
+              <tr>
+                <td id="r-field-data" colspan="2">
+                  <label class="r-label"><b>Изменение R (1...4):</b></label
+                  ><br />
+                  <input
+                    type="text"
+                    id="r-field"
+                    name="r-field"
+                    placeholder="Целое число от 1 до 4"
+                    maxlength="10"
+                    style="width: 60%"
+                  />
+                  <div id="r-error" class="error-message"></div>
+                </td>
+              </tr>
+
+              <!--Кнопка отправить резы и очистить историю-->
+              <tr>
+                <td id="submit-button-data" colspan="2">
+                  <input type="submit" id="submit-button" value="Отправить" />
+                  <input type="button" id="clear-button" value="Очистить историю" />
+                  <div id="server-error" class="error-message"></div>
+                </td>
+              </tr>
+            </form>
+
+            <!--Заголовок таблицы результатов-->
+            <tr>
+              <th class="header" colspan="6">Таблица результатов</th>
+            </tr>
+
+            <!--Ряд с подписью результатов-->
+            <tr class="result-labels">
+              <td>Значение X</td>
+              <td>Значение Y</td>
+              <td>Значение R</td>
+              <td>Результат</td>
+              <td>Время отправки</td>
+              <td>Время выполнения</td>
+            </tr>
+
+            <!--Результаты-->
+            <tbody id="result-table-body"></tbody>
+         
+          </table>
+        </td>
+
+        <td class="side-cell">
+          <img class="side-gif" src="images/animation.gif" alt="Реклама не штурм" />
+          <img src="images/RightPicture.jpeg" alt="RightAd" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
