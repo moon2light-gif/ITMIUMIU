@@ -8,8 +8,9 @@
     <audio id="audioOnHit" src="audio/audioOnHit.mp3"></audio>
     <audio id="audioOnLose" src="audio/audioOnMiss.mp3"></audio>
     <audio id="audioOnInvalidInput" src="audio/audioOnInvalidData.mp3"></audio>
+    <audio id="audioOnClear" src="audio/audioOnClear.mp3"></audio>
 
-    <script type="module" src="scripts/main.js?v=4"></script>
+    <script type="module" src="scripts/main.js?v=5"></script>
 
     <!--Стилизация внутри веб-документа-->
     <link rel="stylesheet" href="styles/style.css" />
@@ -19,9 +20,9 @@
     <table class="outer-table">
       <tr>
         <td class="side-cell">
-          <img src="images/LogoITMO.png" alt="Контора"/>
-          <img class="side-gif" src="images/binance.gif" alt="Gif слева" />
-          <img src="images/YandexPicture.jpg" alt="Реклама Яндекс" />
+          <img src="media/LogoITMO.png" alt="Контора"/>
+          <video id="left" src="media/binance.mp4" loop muted playsinline autoplay></video>
+          <img src="media/YandexPicture.jpg" alt="Реклама Яндекс" />
           
         </td>
 
@@ -36,9 +37,15 @@
             <!--Шапка сайта с указанием всего нужного-->
             <tr>
               <th class="top-header" colspan="6">
-                <div style="display: flex; justify-content: space-between; width: 100%;">
+                <div class="th-inner">
                 <span>ФИО: Крамарь Михаил Романович</span>
-                <span>Группа: P3213 | Вариант: 13</span>
+                <div class="right-side">
+                  <span>Группа: P3213 | Вариант: 13</span>
+                  <input type="range" id="volume" min="0" max="2" value="1" step="0.01" maxlength="2"/>
+                  <button id="sound-button">
+                    <img src="media/sound.png" class="button-icon"/>
+                  </button>
+                </div>
                 </div>
               </th>
             </tr>
@@ -138,13 +145,13 @@
 
             <!--Результаты-->
             <tbody id="result-table-body"></tbody>
-         
+            
           </table>
         </td>
 
         <td class="side-cell">
-          <img class="side-gif" src="images/animation.gif" alt="Реклама не штурм" />
-          <img src="images/RightPicture.jpeg" alt="RightAd" />
+          <video id="right" src="media/subway_mixed.mp4" loop muted playsinline autoplay></video>
+          <img src="media/RightPicture.jpeg" alt="RightAd" />
         </td>
       </tr>
     </table>

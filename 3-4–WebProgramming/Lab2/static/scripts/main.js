@@ -214,6 +214,10 @@ async function handleClearButton() {
 
     // Очищаем текущую отрисованную таблицу
     document.getElementById("result-table-body").innerHTML = "";
+    items = [];
+    currentPage = 0;
+    document.querySelector(".pagination")?.remove();
+    playClearHistoryAudio();
     // Текущее значение R и точку выставляем неизвестными
     currentR = null;
     lastPoint = null;
@@ -258,7 +262,7 @@ async function handleFormSubmit(event) {
     const record = await response.json();
 
     // Добавляем запись в таблицу
-    appendRowToResultTable(record);
+    pushRowToResultTable(record);
 
     currentR = record.r;
     // Перезаписываем координаты последней точки для отрисовки
@@ -292,7 +296,7 @@ function formatTime(ms) {
 }
 
 // Важнейшая функция добавления строки с результатами
-function appendRowToResultTable(rec) {
+function pushRowToResultTable(rec) {
   const tbody = document.getElementById("result-table-body");
   const row = document.createElement("tr");
   row.className = "results-row";
@@ -316,7 +320,14 @@ function appendRowToResultTable(rec) {
   });
 
   // Присоединяем строку с резами
-  tbody.appendChild(row);
+  tbody.prepend(row);
+
+  // Обнова
+  items = Array.from(tbody.getElementsByTagName("tr"));
+  document.querySelector(".pagination")?.remove();
+  createPageButtons();
+  currentPage = 0;
+  showPage(currentPage);
 }
 
 // Восстанавливает таблицу и последнюю точку на Canvas после перезагрузки
@@ -330,7 +341,7 @@ async function loadResults() {
     // Получаем все записи в виде json-строки
     const history = await response.json();
     history.forEach((elem) => {
-      appendRowToResultTable(elem);
+      pushRowToResultTable(elem);
       lastPoint = { x: elem.x, y: elem.y, hit: elem.hit };
       currentR = elem.r;
     });
@@ -357,15 +368,94 @@ function playInvalidInputAudio() {
   }
 }
 
+// Проигрывание звука при очистке таблицы
+function playClearHistoryAudio() {
+  const audio = document.getElementById("audioOnClear");
+  if (audio) {
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+  }
+}
+
+// Пагинация таблички
+const itemsPerPage = 10;
+let currentPage = 0;
+let items = [];
+
+// Функция отображения одной страницы
+function showPage(page) {
+  const startIndex = page * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  items.forEach((item, index) => {
+    item.classList.toggle("hidden", index < startIndex || index >= endIndex);
+  });
+  updateActiveButtonStates();
+}
+
+// Функция создания кнопок для переключения между страницами
+function createPageButtons() {
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+
+  document.querySelector(".pagination")?.remove();
+
+  if (totalPages <= 1) return;
+
+  const paginationContainer = document.createElement("div");
+  paginationContainer.classList.add("pagination");
+
+  for (let i = 0; i < totalPages; i++) {
+    const pageButton = document.createElement("button");
+    pageButton.textContent = i + 1;
+    pageButton.addEventListener("click", () => {
+      currentPage = i;
+      showPage(currentPage);
+    });
+    paginationContainer.appendChild(pageButton);
+  }
+
+  const tbody = document.getElementById("result-table-body");
+  const tableWrapper = tbody
+    ? tbody.closest("table") || tbody.parentElement
+    : document.body;
+  tableWrapper.after(paginationContainer);
+
+  updateActiveButtonStates();
+}
+
+// Функция обновления кнопок страниц при нажатии
+function updateActiveButtonStates() {
+  const pageButtons = document.querySelectorAll(".pagination button");
+  pageButtons.forEach((button, index) => {
+    if (index == currentPage) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
+  });
+}
+
 // Сборка результатов
 document.addEventListener("DOMContentLoaded", async () => {
+  const audioState = {
+    left: document.getElementById("left"),
+    right: document.getElementById("right"),
+    audioContext: null,
+    gainNode: null,
+    volume: 1,
+    enabled: false,
+  };
+
+  document
+    .getElementById("sound-button")
+    .addEventListener("click", handleSoundButton(audioState));
+
+  document
+    .getElementById("volume")
+    .addEventListener("input", handleVolumeChange(audioState));
+
   document
     .getElementById("point-form")
     .addEventListener("submit", handleFormSubmit);
-
-  document
-    .getElementById("clear-button")
-    .addEventListener("click", handleClearButton);
 
   document
     .getElementById("y-field")
@@ -375,7 +465,72 @@ document.addEventListener("DOMContentLoaded", async () => {
     .getElementById("r-field")
     .addEventListener("input", () => showError("r-error", ""));
 
+  document
+    .getElementById("clear-button")
+    .addEventListener("click", handleClearButton);
+
+  // HTML-элемент, который содержит все наши строки результатов запросов
+  const content = document.getElementById("result-table-body");
+
+  // Функция для инициализации аудио
+  function initAudio(audioState) {
+    const audioContext = new AudioContext();
+    const gainNode = audioContext.createGain();
+
+    gainNode.gain.value = audioState.volume;
+    gainNode.connect(audioContext.destination);
+
+    const connect = (video, pan) => {
+      audioContext
+        .createMediaElementSource(video)
+        .connect(new StereoPannerNode(audioContext, { pan }))
+        .connect(gainNode);
+    };
+
+    // Панорамирование: -1 для левого видео, 1 - для правого
+    connect(audioState.left, -1);
+    connect(audioState.right, 1);
+
+    audioState.audioContext = audioContext;
+    audioState.gainNode = gainNode;
+  }
+
+  // Включаем звук на странице, используя Web Audio API
+  function handleSoundButton(audioState) {
+    return async () => {
+      if (!audioState.audioContext) {
+        initAudio(audioState);
+        await audioState.audioContext.resume();
+        audioState.left.muted = audioState.right.muted = false;
+        audioState.enabled = true;
+      } else {
+        audioState.enabled = !audioState.enabled;
+        audioState.gainNode.gain.value = audioState.enabled
+          ? audioState.volume
+          : 0;
+      }
+    };
+  }
+
+  // Регулировка громкости на странице
+  function handleVolumeChange(audioState) {
+    return (event) => {
+      audioState.volume = Number(event.target.value);
+      if (audioState.gainNode && audioState.enabled) {
+        audioState.gainNode.gain.value = audioState.volume;
+      }
+    };
+  }
+
   // Загрузка прошлых взаимодействий с сайтиком через веб-сервер
-  await loadResults();
+  try {
+    await loadResults();
+    items = Array.from(content.getElementsByTagName("tr"));
+  } catch (error) {
+    console.error(`Ошибка при загрузке результатов: ${error.message}`);
+  }
+
   drawScene();
+  createPageButtons();
+  showPage(currentPage);
 });

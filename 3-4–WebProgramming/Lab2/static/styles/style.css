@@ -47,6 +47,99 @@ td {
   background-color: #eef2f2;
 }
 
+.th-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.right-side {
+  display: flex;
+  gap: 16px;
+}
+
+.right-side span {
+  margin-top: 5px;
+}
+
+/* Регулировка громкости */
+#volume {
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  margin: 12px 0;
+  vertical-align: middle;
+}
+
+#volume::-webkit-slider-runnable-track {
+  background: #bcbcbc;
+  height: 8px;
+  border-radius: 8px;
+  width: 120px;
+}
+
+#volume::-webkit-slider-runnable-track:hover {
+  background: #9d9d9d;
+  height: 8px;
+  border-radius: 8px;
+  width: 120px;
+}
+
+#volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  background-image: url("../media/soundcloud.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  margin-top: -8px;
+}
+
+#volume::-moz-range-thumb {
+  width: 24px;
+  height: 24px;
+  background-image: url("../media/soundcloud.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+}
+
+/* Кнопка включения звука */
+#sound-button {
+  background-color: #cfcfcfd9;
+  padding: 5px;
+  border: 2px solid rgb(90, 90, 90);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.button-icon {
+  height: 20px;
+  width: auto;
+  display: block;
+}
+
+#volume::-moz-range-thumb:hover {
+  cursor: pointer;
+}
+
+#volume::-webkit-slider-thumb:hover {
+  cursor: pointer;
+}
+
+#sound-button:hover {
+  cursor: pointer;
+  background-color: rgb(159, 166, 170);
+}
+
 table tr td {
   text-align: center;
   vertical-align: middle;
@@ -90,6 +183,10 @@ table tr td {
   display: inline-block;
 }
 
+input[type="radio"]:hover {
+  cursor: pointer;
+}
+
 input[name="y-field"],
 input[name="r-field"] {
   width: 100%;
@@ -109,7 +206,7 @@ input[name="r-field"] {
   background-color: #254a56;
   color: #ffffff;
   border: 3px solid rgb(27, 47, 31);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 #submit-button:hover {
@@ -122,7 +219,7 @@ input[name="r-field"] {
   cursor: pointer;
   font-size: 14px;
   border: 2px solid rgb(111, 111, 111);
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #e7e7e7;
 }
 
@@ -192,4 +289,38 @@ input[type="radio"]:checked {
   background-color: rgb(225, 225, 225);
   overflow-y: scroll;
   height: 200px;
+}
+
+/* Стиль для сокрытия элементов таблицы в пагинации */
+.hidden {
+  display: none;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.active {
+  background-color: #789eaa;
+  border: 2px solid rgb(67, 67, 67);
+  border-radius: 4px;
+}
+
+/* Стиль для левого и правого видео */
+#right,
+#left {
+  width: 220px;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+}
+
+#left {
+  height: 400px;
+}
+
+#right {
+  height: 480px;
 }
